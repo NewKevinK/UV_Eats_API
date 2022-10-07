@@ -4,6 +4,8 @@ require("dotenv").config();
 const userRoute = require("./routes/user");
 const path = require('path');
 
+import testRoutes from "./routes/test";
+
 // Swagger
 const swaggerUI = require('swagger-ui-express');
 const swaggerJsDoc = require('swagger-jsdoc');
@@ -39,6 +41,8 @@ app.use(morgan('dev'));
 app.get("/", (req, res) => {
   res.send("Welcome to my API");
 }); 
+
+app.use("/api/test",testRoutes);
 
 
 // Extras
