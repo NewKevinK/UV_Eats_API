@@ -42,7 +42,7 @@ app.get("/", (req, res) => {
   res.send("Welcome to my API");
 }); 
 
-app.use("/api/test",testRoutes);
+app.use("/api/test/",testRoutes);
 
 
 // Extras
