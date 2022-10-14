@@ -5,6 +5,9 @@ const userRoute = require("./routes/user");
 const path = require('path');
 
 import testRoutes from "./routes/test";
+import productoRoutes from "./routes/producto";
+import usuarioRoutes from "./routes/usuario";
+
 
 // Swagger
 const swaggerUI = require('swagger-ui-express');
@@ -22,7 +25,7 @@ const swaggerSpec = {
             },
         ],
     },
-    apis: [`${path.join(__dirname, "./routes/*.js")}`],
+    apis: [`${path.join(__dirname, "./routes/producto/*.js")}`],
 };
 
 
@@ -43,6 +46,8 @@ app.get("/", (req, res) => {
 }); 
 
 app.use("/api/test/",testRoutes);
+app.use("/api/producto/",productoRoutes);
+app.use("/api/usuario/",usuarioRoutes);
 
 
 // Extras
