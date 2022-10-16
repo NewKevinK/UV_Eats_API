@@ -1,12 +1,12 @@
 const express = require('express');
 const morgan = require('morgan');
 require("dotenv").config();
-const userRoute = require("./routes/user");
 const path = require('path');
 
 import testRoutes from "./routes/test";
 import productoRoutes from "./routes/producto";
 import usuarioRoutes from "./routes/usuario";
+import authRoutes from "./routes/auth";
 
 
 // Swagger
@@ -35,10 +35,11 @@ const port = process.env.PORT || 1999;
 
 // Middlewares
 app.use(express.json());
-app.use("/api", userRoute);
 app.use("/api/doc", swaggerUI.serve, swaggerUI.setup(swaggerJsDoc(swaggerSpec)));
 
 app.use(morgan('dev'));
+app.use(express.urlencoded({extended : false}));
+app.use(express.json());
 
 // Routes 
 app.get("/", (req, res) => {
@@ -48,7 +49,7 @@ app.get("/", (req, res) => {
 app.use("/api/test/",testRoutes);
 app.use("/api/producto/",productoRoutes);
 app.use("/api/usuario/",usuarioRoutes);
-
+app.use("/api/auth",authRoutes);
 
 // Extras
 app.listen(port, () => console.log("Server listening to", port));

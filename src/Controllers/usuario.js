@@ -1,10 +1,12 @@
 import { getConnection } from "../Database/dbConfig"
 import { SPI_usuario, SPS_usuario } from "../Database/Procedures/usuario"
+import { encrypt } from "../Helpers/handleBcrypt";
 
 const addUsuario = async (req,res) => {
     try{
         const {nombre, apellido, email, password} = req.body;
-        const usuario = {nombre, apellido, email, password};
+        const passwordHashed = await encrypt(password);
+        const usuario = {nombre, apellido, email, password:passwordHashed};
 
 
         const connection = await getConnection();

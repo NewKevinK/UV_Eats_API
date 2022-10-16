@@ -30,7 +30,6 @@ const getProducto = async (req,res) => {
 const getProductoID = async (req,res) => {
     try{
         const { idProducto } = req.params;
-
         const connection = await getConnection();
         const result = await connection.query(SPS_productoID, idProducto);
         res.json(result);
