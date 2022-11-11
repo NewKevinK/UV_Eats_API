@@ -15,6 +15,23 @@ const existEmail = async (emailu) => {
     }catch(error){
     }
 }
+
+const existCelular = async (celularu) => {
+    try{
+        let connection = await getConnection();
+        let result = await connection.query("SELECT celular FROM usuario WHERE email = celular", celularu);
+        
+        var data=JSON.parse(JSON.stringify(result));
+        
+        if(data[0].celular === celularu){
+            return true;
+        }else{
+            return false;
+    }
+    }catch(error){
+    }
+}
+
 const findOne = async (emailu) => {
     try {
         let connection = await getConnection();
@@ -30,5 +47,6 @@ const findOne = async (emailu) => {
 
 module.exports = {
     existEmail,
+    existCelular,
     findOne
 }

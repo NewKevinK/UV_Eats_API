@@ -1,5 +1,6 @@
 import { getConnection } from "../Database/dbConfig"
 import { SPI_test } from "../Database/Procedures/test";
+import {ordenProductos} from "../Helpers/others";
 
 
 
@@ -24,7 +25,11 @@ const getTests = async (req,res) => {
     try{
         const connection = await getConnection();
         const result = await connection.query("SELECT id, topMundial, pais, pib, fechaRegistro FROM test");
+        const test = await ordenProductos(1);
         res.json(result);
+
+        
+
     }catch(error){
         res.status(500);
         res.send(error.message);

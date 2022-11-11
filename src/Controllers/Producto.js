@@ -1,5 +1,6 @@
 import { getConnection } from "../Database/dbConfig"
-import {SPI_producto, SPS_producto, SPS_productoID, SPD_producto, SPA_producto, SPA_productoLike, SPA_productoDislike } from "../Database/Procedures/producto";
+import {SPI_producto, SPS_producto, SPS_productoID, SPD_producto, SPA_producto, SPA_productoLike, SPA_productoDislike, SPI_productoAddFav, SPD_productoQuitFav } from "../Database/Procedures/producto";
+import { getDate } from "../Helpers/others";
 
 const addProducto = async (req,res) => {
     try{
@@ -93,6 +94,33 @@ const updateProductoDislike = async (req, res) => {
     }
 };
 
+const addProductoFav = async (req, res) => {
+    try {
+        const date = await getDate();
+        const {idUsuario, idProducto} = req.body;
+        const fav = {idUsuario, idProducto, fecha:date };
+
+        const connection = await getConnection();
+        await connection.query(SPI_productoAddFav, fav);
+        res.json({ message: "fav added" });
+    } catch (error) {
+        res.status(500);
+        res.send(error.message);
+    }
+};
+
+const deleteProductoFav = async (req, res) => {
+    try {
+        const {idUsuario, idProducto} = req.body;
+        
+        const connection = await getConnection();
+        const result = await connection.query(SPD_productoQuitFav, idUsuario, idProducto);
+        res.json(result);
+    } catch (error) {
+        res.status(500);
+        res.send(error.message);
+    }
+};
 
 export const methods = {
     addProducto,
@@ -102,5 +130,7 @@ export const methods = {
     updateProducto,
 
     updateProductoLike,
-    updateProductoDislike
+    updateProductoDislike,
+    addProductoFav,
+    deleteProductoFav
 }

@@ -6,6 +6,8 @@ const SPA_producto = "UPDATE producto SET ? WHERE idProducto = ?";
 
 const SPA_productoLike = "UPDATE producto SET numLike = numLike+1 WHERE idProducto = ?";
 const SPA_productoDislike = "UPDATE producto SET numDislike = numDislike+1 WHERE idProducto = ?";
+const SPI_productoAddFav = "INSERT INTO favorito SET ?";
+const SPD_productoQuitFav = "DELETE FROM favorito WHERE idUsuario = ? and idProducto = ? ";
 
 
 module.exports = {
@@ -16,5 +18,7 @@ module.exports = {
     'SPA_producto' : SPA_producto,
 
     'SPA_productoLike' : SPA_productoLike,
-    'SPA_productoDislike' : SPA_productoDislike
+    'SPA_productoDislike' : SPA_productoDislike,
+    'SPI_productoAddFav' : SPI_productoAddFav,
+    'SPD_productoQuitFav' : SPD_productoQuitFav
 }

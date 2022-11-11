@@ -1,8 +1,8 @@
-const SPI_categoria = "";
-const SPS_categoria = "";
-const SPS_categoriaID = "";
-const SPD_categoria = "";
-const SPA_categoria = "";
+const SPI_categoria = "INSERT INTO categoria SET ?";
+const SPS_categoria = "SELECT idCategoria, nombre, descripcion FROM categoria";
+const SPS_categoriaID = "SELECT idCategoria, nombre, descripcion FROM categoria WHERE idCategoria = ?";
+const SPD_categoria = "DELETE FROM categoria WHERE idCategoria = ?";
+const SPA_categoria = "UPDATE categoria SET ? WHERE idCategoria = ?";
 
 module.exports = {
     'SPI_categoria' : SPI_categoria,

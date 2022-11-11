@@ -7,6 +7,10 @@ import testRoutes from "./routes/test";
 import productoRoutes from "./routes/producto";
 import usuarioRoutes from "./routes/usuario";
 import authRoutes from "./routes/auth";
+import categoriaRoutes from "./routes/categoria";
+import menuRoutes from "./routes/menu";
+import carroRoutes from "./routes/carroCompra";
+import ordenRoutes from "./routes/orden";
 
 
 // Swagger
@@ -35,7 +39,7 @@ const port = process.env.PORT || 1999;
 
 // Middlewares
 app.use(express.json());
-app.use("/api/doc", swaggerUI.serve, swaggerUI.setup(swaggerJsDoc(swaggerSpec)));
+app.use("/api/doc/", swaggerUI.serve, swaggerUI.setup(swaggerJsDoc(swaggerSpec)));
 
 app.use(morgan('dev'));
 app.use(express.urlencoded({extended : false}));
@@ -50,6 +54,10 @@ app.use("/api/test/",testRoutes);
 app.use("/api/producto/",productoRoutes);
 app.use("/api/usuario/",usuarioRoutes);
 app.use("/api/auth",authRoutes);
+app.use("/api/categoria", categoriaRoutes);
+app.use("/api/menu/",menuRoutes);
+app.use("/api/carro/",carroRoutes);
+app.use("/api/orden/",ordenRoutes);
 
 // Extras
 app.listen(port, () => console.log("Server listening to", port));

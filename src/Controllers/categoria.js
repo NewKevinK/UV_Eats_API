@@ -58,7 +58,7 @@ const updateCategoria = async (req, res) => {
         const { idCategoria } = req.params;
         const { nombre, descripcion } = req.body;
 
-        const catgeoria = { nombre, descripcion };
+        const categoria = { nombre, descripcion };
         const connection = await getConnection();
         const result = await connection.query(SPA_producto, [categoria, idCategoria]);
         res.json(result);
