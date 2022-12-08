@@ -1,6 +1,6 @@
 import { getConnection } from "../Database/dbConfig"
 import { compare } from "../Helpers/handleBcrypt"
-const { existEmail, findOne } = require("../Helpers/validateUser")
+const { existEmail, findOne, getId } = require("../Helpers/validateUser")
 const { generateAccessToken } = require("../Helpers/jwtHelper")
 
 const loginAuth = async (req,res) => {
@@ -16,7 +16,8 @@ const loginAuth = async (req,res) => {
                 const connection = await getConnection();
                 const emailUser = {email: email};
                 const accessToken = generateAccessToken(emailUser);
-                res.header('authorization', accessToken).json({message: "authenticated user", token: accessToken});
+                const idUser = await getId(email);
+                res.header('authorization', accessToken).json({message: "authenticated user", token: accessToken, id: idUser});
 
             }else{
                 res.json({ message: "Wrong password" });

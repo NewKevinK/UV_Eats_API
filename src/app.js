@@ -11,6 +11,7 @@ import categoriaRoutes from "./routes/categoria";
 import menuRoutes from "./routes/menu";
 import carroRoutes from "./routes/carroCompra";
 import ordenRoutes from "./routes/orden";
+import archivoRoutes from "./routes/archivo";
 
 
 // Swagger
@@ -58,6 +59,7 @@ app.use("/api/categoria", categoriaRoutes);
 app.use("/api/menu/",menuRoutes);
 app.use("/api/carro/",carroRoutes);
 app.use("/api/orden/",ordenRoutes);
+app.use("/api/archivo/", archivoRoutes);
 
 // Extras
 app.listen(port, () => console.log("Server listening to", port));

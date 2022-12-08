@@ -1,5 +1,5 @@
 import { getConnection } from "../Database/dbConfig"
-import { SPD_carroCompra, SPD_carroProducto, SPI_carroProducto, SPS_carroCompra, SPS_carroCompraID, SPS_carroProductoID } from "../Database/Procedures/carroCompra";
+import { SPD_carroCompra,  SPI_carroProducto, SPS_carroCompra, SPS_carroCompraID, SPS_carroProductoID } from "../Database/Procedures/carroCompra";
 import { typeAddCarroProducto, typeQuitCarroProducto, refreshCarroCompra } from "../Helpers/others";
 
 

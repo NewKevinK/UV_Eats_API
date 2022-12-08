@@ -4,7 +4,6 @@ const SPS_ordenID = "SELECT idOrden, fecha, total, estado, idUsuario, idCarro FR
 
 
 const SPI_ordenProducto = "INSERT INTO orden_producto SET ?";
-const SPS_ordenProductoID = "";
 
 
 

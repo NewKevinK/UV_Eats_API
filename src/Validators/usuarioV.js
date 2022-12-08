@@ -12,7 +12,8 @@ const validateCreate = [
 
     check('email')
     .exists()
-    .isEmail(),
+    .isEmail(), 
+    //.isLength(10)
 
     check('password')
     .exists()
