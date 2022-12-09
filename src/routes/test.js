@@ -1,7 +1,7 @@
 const express = require('express')
 const routes = express.Router()
-const {validateCreate} = require('../Validators/testV')
-import {methods as test} from "../Controllers/test";
+const {validateCreate} = require('../Validators/testV.js')
+import {methods as test} from "../Controllers/test.js";
 
 
 routes.post("/", validateCreate, test.addTest);

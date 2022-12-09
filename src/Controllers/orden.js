@@ -1,7 +1,7 @@
-import { getConnection } from "../Database/dbConfig"
-import { SPS_carroCompraID } from "../Database/Procedures/carroCompra";
-import { SPI_orden } from "../Database/Procedures/orden";
-import { getDate, subCar, ordenProductos, resetCar } from "../Helpers/others";
+import { getConnection } from "../Database/dbConfig.js"
+//import { SPS_carroCompraID } from "../Database/Procedures/carroCompra";
+import { SPI_orden } from "../Database/Procedures/orden.js";
+import { getDate, subCar, ordenProductos, resetCar } from "../Helpers/others.js";
 
 const addOrden = async (req,res) => {
     try{

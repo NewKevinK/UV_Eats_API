@@ -1,8 +1,8 @@
-import { getConnection } from "../Database/dbConfig"
-import { SPA_usuario, SPA_usuarioPassword, SPD_usuario, SPI_usuario, SPS_usuario, SPS_usuarioID } from "../Database/Procedures/usuario"
-import { encrypt } from "../Helpers/handleBcrypt";
+import { getConnection } from "../Database/dbConfig.js"
+import { SPA_usuario, SPA_usuarioPassword, SPD_usuario, SPI_usuario, SPS_usuario, SPS_usuarioID } from "../Database/Procedures/usuario.js"
+import { encrypt } from "../Helpers/handleBcrypt.js";
 const { existEmail } = require("../Helpers/validateUser")
-import {createCarritocompra} from "../Helpers/others"
+import {createCarritocompra} from "../Helpers/others.js"
 
 const addUsuario = async (req,res) => {
     try{

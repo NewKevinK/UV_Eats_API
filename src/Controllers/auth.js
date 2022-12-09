@@ -1,5 +1,5 @@
-import { getConnection } from "../Database/dbConfig"
-import { compare } from "../Helpers/handleBcrypt"
+import { getConnection } from "../Database/dbConfig.js"
+import { compare } from "../Helpers/handleBcrypt.js"
 const { existEmail, findOne, getId } = require("../Helpers/validateUser")
 const { generateAccessToken } = require("../Helpers/jwtHelper")
 

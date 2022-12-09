@@ -1,6 +1,6 @@
-import { getConnection } from "../Database/dbConfig"
-import {SPI_producto, SPS_producto, SPS_productoID, SPD_producto, SPA_producto, SPA_productoLike, SPA_productoDislike, SPI_productoAddFav, SPD_productoQuitFav } from "../Database/Procedures/producto";
-import { getDate } from "../Helpers/others";
+import { getConnection } from "../Database/dbConfig.js"
+import {SPI_producto, SPS_producto, SPS_productoID, SPD_producto, SPA_producto, SPA_productoLike, SPA_productoDislike, SPI_productoAddFav, SPD_productoQuitFav } from "../Database/Procedures/producto.js";
+import { getDate } from "../Helpers/others.js";
 
 const addProducto = async (req,res) => {
     try{

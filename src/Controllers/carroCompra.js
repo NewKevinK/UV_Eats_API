@@ -1,6 +1,6 @@
-import { getConnection } from "../Database/dbConfig"
-import { SPD_carroCompra,  SPI_carroProducto, SPS_carroCompra, SPS_carroCompraID, SPS_carroProductoID } from "../Database/Procedures/carroCompra";
-import { typeAddCarroProducto, typeQuitCarroProducto, refreshCarroCompra } from "../Helpers/others";
+import { getConnection } from "../Database/dbConfig.js"
+import { SPD_carroCompra,  SPI_carroProducto, SPS_carroCompra, SPS_carroCompraID, SPS_carroProductoID } from "../Database/Procedures/carroCompra.js";
+import { typeAddCarroProducto, typeQuitCarroProducto, refreshCarroCompra } from "../Helpers/others.js";
 
 
 

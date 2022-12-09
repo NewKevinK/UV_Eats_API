@@ -3,7 +3,7 @@ const routes = express.Router()
 
 const {validateCreate} = require("../Validators/categoriaV")
 const { validateToken } = require('../Helpers/jwtHelper')
-import {methods as categoria} from "../Controllers/categoria";
+import {methods as categoria} from "../Controllers/categoria.js";
 
 routes.post("/", validateToken, validateCreate, categoria.addCategoria);
 routes.get("/", validateToken, categoria.getCategoria);

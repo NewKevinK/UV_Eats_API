@@ -3,7 +3,7 @@ const routes = express.Router()
 
 const {validateCreate} = require("../Validators/menuV")
 const { validateToken } = require('../Helpers/jwtHelper')
-import {methods as menu} from "../Controllers/menu";
+import {methods as menu} from "../Controllers/menu.js";
 
 routes.post("/", validateToken, validateCreate, menu.addMenu);
 routes.get("/", validateToken, menu.getMenu);

@@ -3,7 +3,7 @@ const routes = express.Router()
 const {validateCreate} = require('../Validators/usuarioV')
 const { validateToken } = require('../Helpers/jwtHelper');
 
-import {methods as usuario} from "../Controllers/usuario";
+import {methods as usuario} from "../Controllers/usuario.js";
 
 
 routes.post("/", validateCreate, usuario.addUsuario);

@@ -1,6 +1,6 @@
 const express = require('express')
 const routes = express.Router()
-import {methods as auth} from "../Controllers/auth";
+import {methods as auth} from "../Controllers/auth.js";
 
 routes.post("/", auth.loginAuth);
 

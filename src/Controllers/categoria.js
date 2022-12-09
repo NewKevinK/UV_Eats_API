@@ -1,5 +1,5 @@
-import { getConnection } from "../Database/dbConfig"
-import { SPD_categoria, SPI_categoria, SPS_categoria, SPS_categoriaID } from "../Database/Procedures/categoria";
+import { getConnection } from "../Database/dbConfig.js"
+import { SPD_categoria, SPI_categoria, SPS_categoria, SPS_categoriaID, SPA_categoria } from "../Database/Procedures/categoria.js";
 
 const addCategoria = async (req,res) => {
     try{
@@ -60,7 +60,7 @@ const updateCategoria = async (req, res) => {
 
         const categoria = { nombre, descripcion };
         const connection = await getConnection();
-        const result = await connection.query(SPA_producto, [categoria, idCategoria]);
+        const result = await connection.query(SPA_categoria, [categoria, idCategoria]);
         res.json(result);
     } catch (error) {
         res.status(500);

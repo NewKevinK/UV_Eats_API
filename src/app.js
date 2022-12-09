@@ -3,15 +3,15 @@ const morgan = require('morgan');
 require("dotenv").config();
 const path = require('path');
 
-import testRoutes from "./routes/test";
-import productoRoutes from "./routes/producto";
-import usuarioRoutes from "./routes/usuario";
-import authRoutes from "./routes/auth";
-import categoriaRoutes from "./routes/categoria";
-import menuRoutes from "./routes/menu";
-import carroRoutes from "./routes/carroCompra";
-import ordenRoutes from "./routes/orden";
-import archivoRoutes from "./routes/archivo";
+import testRoutes from "./routes/test.js";
+import productoRoutes from "./routes/producto.js";
+import usuarioRoutes from "./routes/usuario.js";
+import authRoutes from "./routes/auth.js";
+import categoriaRoutes from "./routes/categoria.js";
+import menuRoutes from "./routes/menu.js";
+import carroRoutes from "./routes/carroCompra.js";
+import ordenRoutes from "./routes/orden.js";
+import archivoRoutes from "./routes/archivo.js";
 
 
 // Swagger
@@ -63,6 +63,8 @@ app.use("/api/archivo/", archivoRoutes);
 
 // Extras
 app.listen(port, () => console.log("Server listening to", port));
+
 export default app;
+//module.exports = app;
 
 

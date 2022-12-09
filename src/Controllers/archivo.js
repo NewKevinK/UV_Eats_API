@@ -1,6 +1,6 @@
-import { getConnection } from "../Database/dbConfig"
+import { getConnection } from "../Database/dbConfig.js"
 require('dotenv').config()
-import { SPI_archivoCategoria, SPI_archivoMenu, SPI_archivoProducto } from "../Database/Procedures/archivo"
+import { SPI_archivoCategoria, SPI_archivoMenu, SPI_archivoProducto } from "../Database/Procedures/archivo.js"
 
 const Multer = require('multer')
 const FirebaseStorage = require('multer-firebase-storage')

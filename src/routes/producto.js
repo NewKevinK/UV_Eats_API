@@ -1,8 +1,8 @@
 const express = require('express')
 const routes = express.Router()
-const {validateCreate} = require('../Validators/productoV')
-const { validateToken } = require('../Helpers/jwtHelper');
-import {methods as producto} from "../Controllers/producto";
+const {validateCreate} = require('../Validators/productoV.js')
+const { validateToken } = require('../Helpers/jwtHelper.js');
+import {methods as producto} from "../Controllers/producto.js";
 
 routes.post("/", validateToken, validateCreate, producto.addProducto);
 routes.get("/", validateToken, producto.getProducto);
@@ -13,7 +13,7 @@ routes.patch("/:idProducto", validateToken,  validateCreate, producto.updateProd
 routes.patch("/like/:idProducto", validateToken, producto.updateProductoLike);
 routes.patch("/dislike/:idProducto", validateToken, producto.updateProductoDislike);
 
-routes.post("/addFav", producto.addProductoFav);
-routes.delete("/quitFav", producto.deleteProductoFav);
+routes.post("/addFav", validateToken, producto.addProductoFav);
+routes.delete("/quitFav", validateToken, producto.deleteProductoFav);
 
 module.exports = routes

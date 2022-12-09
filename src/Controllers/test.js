@@ -1,6 +1,6 @@
-import { getConnection } from "../Database/dbConfig"
-import { SPI_test } from "../Database/Procedures/test";
-import {ordenProductos} from "../Helpers/others";
+import { getConnection } from "../Database/dbConfig.js"
+import { SPI_test } from "../Database/Procedures/test.js";
+import {ordenProductos} from "../Helpers/others.js";
 
 
 

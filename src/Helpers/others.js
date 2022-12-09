@@ -1,6 +1,6 @@
-import { getConnection } from "../Database/dbConfig"
-import { SPA_carroCompraRefresh, SPA_carroProductoAddProducto, SPI_carroCompra, SPI_carroProducto, SPS_carroProductoID } from "../Database/Procedures/carroCompra";
-import { SPI_ordenProducto } from "../Database/Procedures/orden";
+import { getConnection } from "../Database/dbConfig.js"
+import { SPI_carroCompra,  SPS_carroProductoID } from "../Database/Procedures/carroCompra.js";
+import { SPI_ordenProducto } from "../Database/Procedures/orden.js";
 
 const getDate = async () => {
     try{
