@@ -123,13 +123,12 @@ const deleteProductoFav = async (req, res) => {
     }
 };
 
-export const methods = {
+export const methodsss = {
     addProducto,
     getProducto,
     getProductoID,
     deleteProducto,
     updateProducto,
-
     updateProductoLike,
     updateProductoDislike,
     addProductoFav,
