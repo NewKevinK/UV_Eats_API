@@ -10,7 +10,7 @@ import morgan from 'morgan'
 import path from 'path'
 
 import testRoutes from "./routes/test.js"; 
-//import productoRoutes from "./routes/producto.js";
+import productoRoutes from "./routes/producto.js";
 import usuarioRoutes from "./routes/usuario.js";
 import authRoutes from "./routes/auth.js";
 //import categoriaRoutes from "./routes/categoria.js";
@@ -60,7 +60,7 @@ app.get("/", (req, res) => {
 }); 
 
 app.use("/api/test/",testRoutes); 
-//app.use("/api/producto/",productoRoutes);
+app.use("/api/producto/",productoRoutes);
 app.use("/api/usuario/",usuarioRoutes);
 app.use("/api/auth",authRoutes);
 //app.use("/api/categoria", categoriaRoutes);
