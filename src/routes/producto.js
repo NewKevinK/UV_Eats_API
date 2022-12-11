@@ -7,18 +7,19 @@ import { validateToken } from '../Helpers/jwtHelper.js';
 //import {methods as producto} from "../Controllers/producto.js";
 //import {methods} from '../Controllers/producto.js'
 import { methodsss } from '../Controllers/producto.js';
+import { methodsss as pro } from '../Controllers/producto3.js';
 
-routes.post("/", validateToken, methodsss.addProducto);
-routes.get("/", validateToken, methodsss.getProducto);
-routes.get("/:idProducto", validateToken, methodsss.getProductoID);
-routes.delete("/:idProducto", validateToken, methodsss.deleteProducto);
-routes.patch("/:idProducto", validateToken, methodsss.updateProducto);
+routes.post("/", validateToken, pro.addProducto);
+routes.get("/", validateToken, pro.getProducto);
+routes.get("/:idProducto", validateToken, pro.getProductoID);
+routes.delete("/:idProducto", validateToken, pro.deleteProducto);
+routes.patch("/:idProducto", validateToken, pro.updateProducto);
 
-routes.patch("/like/:idProducto", validateToken, methodsss.updateProductoLike);
-routes.patch("/dislike/:idProducto", validateToken, methodsss.updateProductoDislike);
+routes.patch("/like/:idProducto", validateToken, pro.updateProductoLike);
+routes.patch("/dislike/:idProducto", validateToken, pro.updateProductoDislike);
 
-routes.post("/addFav", validateToken, methodsss.addProductoFav);
-routes.delete("/quitFav", validateToken, methodsss.deleteProductoFav);
+routes.post("/addFav", validateToken, pro.addProductoFav);
+routes.delete("/quitFav", validateToken, pro.deleteProductoFav);
 
 export default routes;
 //module.exports = routes
