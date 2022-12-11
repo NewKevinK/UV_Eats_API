@@ -6,7 +6,7 @@ const routes = express.Router()
 import { validateToken } from '../Helpers/jwtHelper.js';
 //import {methods as producto} from "../Controllers/producto.js";
 //import {methods} from '../Controllers/producto.js'
-import { methodsss } from '../Controllers/producto.js';
+//import { methodsss } from '../Controllers/producto.js';
 import { methodsss as pro } from '../Controllers/producto3.js';
 
 routes.post("/", validateToken, pro.addProducto);
