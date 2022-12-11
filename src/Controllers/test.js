@@ -14,8 +14,8 @@ const addTest = async (req,res) => {
         
         //const connection = await getConnection();
         //await connection.query(defaults.SPI_test, test);
-
-        const nresult = await pool.query(SPI_test, test);
+        const connection = await getConnection();
+        const nresult = await connection.query(SPI_test, test);
         res.json({ message: "test added" });
         
     }catch(error){
@@ -46,7 +46,8 @@ const getTest = async (req,res) => {
         //const connection = await getConnection();
         //const result = await connection.query("SELECT id, topMundial, pais, pib, fechaRegistro FROM test WHERE id = ?", id);
         console.log("entra a getTest/3");
-        const [result] = await pool.query("SELECT id, topMundial, pais, pib, fechaRegistro FROM test WHERE id = ?", id);
+        const connection = await getConnection();
+        const [result] = await connection.query("SELECT id, topMundial, pais, pib, fechaRegistro FROM test WHERE id = ?", id);
         res.json(result[0]);
     }catch(error){
         res.status(500);

@@ -83,10 +83,46 @@ const uploadProducto = async (req,res) => {
     }
 };
 
+const getImagenCategoria = async (req,res) => {
+    try{
+        const connection = await getConnection();
+        const result = await connection.query("SELECT idCategoria, url  FROM categoriaimagen");
+        res.json(result);
+    }catch(error){
+        res.status(500);
+        res.send(error.message);
+    }
+}
+
+const getImagenMenu = async (req,res) => {
+    try{
+        const connection = await getConnection();
+        const result = await connection.query("SELECT idMenu, url  FROM menuimagen");
+        res.json(result);
+    }catch(error){
+        res.status(500);
+        res.send(error.message);
+    }
+}
+
+const getImagenProducto = async (req,res) => {
+    try{
+        const connection = await getConnection();
+        const result = await connection.query("SELECT idProducto, url  FROM productoimagen");
+        res.json(result);
+    }catch(error){
+        res.status(500);
+        res.send(error.message);
+    }
+}
+
 
 export const methods =  {
     uploadCategoria,
     uploadMenu,
-    uploadProducto
+    uploadProducto,
+    getImagenCategoria,
+    getImagenMenu,
+    getImagenProducto
 }
 

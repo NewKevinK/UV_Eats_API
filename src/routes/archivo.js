@@ -14,6 +14,9 @@ import { methods as archivo } from '../Controllers/archivo.js'
 //routes.post("/uploadCat/",  archivo.uploadCategoria );
 //routes.post("/uploadMen/", controller.multer, archivo.uploadMenu );
 //routes.post("/uploadPro/", controller.multer, archivo.uploadProducto );
+routes.get("/getCategoria", archivo.getImagenCategoria);
+routes.get("/getMenu", archivo.getImagenMenu);
+routes.get("/getProducto", archivo.getImagenProducto);
 
 import  getConnection  from "../Database/dbConfig.js"
 import { SPI_archivoCategoria, SPI_archivoMenu, SPI_archivoProducto } from "../Database/Procedures/archivo.js"
