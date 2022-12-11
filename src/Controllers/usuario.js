@@ -1,22 +1,25 @@
-import { getConnection } from "../Database/dbConfig.js"
+import  getConnection  from "../Database/dbConfig.js"
 import { SPA_usuario, SPA_usuarioPassword, SPD_usuario, SPI_usuario, SPS_usuario, SPS_usuarioID } from "../Database/Procedures/usuario.js"
-import { encrypt } from "../Helpers/handleBcrypt.js";
-const { existEmail } = require("../Helpers/validateUser")
-import {createCarritocompra} from "../Helpers/others.js"
+//import { encrypt } from "../Helpers/handleBcrypt.js";
+import {methods as handle} from '../Helpers/handleBcrypt.js'
+//const { existEmail } = require("../Helpers/validateUser")
+import { methods as methodsvu } from "../Helpers/validateUser.js"
+//import createCarritocompra from "../Helpers/others.js"
+import { method as othermethods } from "../Helpers/others.js";
 
 const addUsuario = async (req,res) => {
     try{
         const {nombre, apellido, email, password} = req.body;
-        const existE = await existEmail(email);
+        const existE = await methodsvu.existEmail(email);
         if(!existE){
-            const passwordHashed = await encrypt(password);
+            const passwordHashed = await handle.encrypt(password);
             const usuario = {nombre, apellido, email, password:passwordHashed};
 
             const connection = await getConnection();
             const result = await connection.query(SPI_usuario, usuario);
             
             res.json(result);
-            const wait = await createCarritocompra(email);
+            const wait = await othermethods.createCarritocompra(email);
             
         }else{
             res.json({ message: "User already registered" });
@@ -85,7 +88,7 @@ const updateUsuarioPassword = async (req, res) => {
     try {
         const { idUsuario } = req.params;
         const { password } = req.body;
-        const passwordHashed = await encrypt(password);
+        const passwordHashed = await handle.encrypt(password);
         const usuario = { password: passwordHashed};
 
         const connection = await getConnection();

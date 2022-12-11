@@ -1,6 +1,7 @@
-import { getConnection } from "../Database/dbConfig.js"
+import  getConnection  from "../Database/dbConfig.js"
 import {SPI_producto, SPS_producto, SPS_productoID, SPD_producto, SPA_producto, SPA_productoLike, SPA_productoDislike, SPI_productoAddFav, SPD_productoQuitFav } from "../Database/Procedures/producto.js";
-import { getDate } from "../Helpers/others.js";
+//import  getDate  from "../Helpers/others.js";
+import { method as othermethods } from "../Helpers/others.js";
 
 const addProducto = async (req,res) => {
     try{
@@ -96,7 +97,7 @@ const updateProductoDislike = async (req, res) => {
 
 const addProductoFav = async (req, res) => {
     try {
-        const date = await getDate();
+        const date = await othermethods.getDate();
         const {idUsuario, idProducto} = req.body;
         const fav = {idUsuario, idProducto, fecha:date };
 

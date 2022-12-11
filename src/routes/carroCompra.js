@@ -1,9 +1,10 @@
-const express = require('express')
+import express from 'express'
+//const express = require('express')
 const routes = express.Router()
 
 import {methods as carroCompra} from "../Controllers/carroCompra.js";
-const { validateToken } = require('../Helpers/jwtHelper');
-
+//const { validateToken } = require('../Helpers/jwtHelper');
+import { validateToken } from '../Helpers/jwtHelper.js';
 
 routes.get("/", validateToken, carroCompra.getCarroCompra);
 routes.get("/:idCarro", validateToken,  carroCompra.getCarroCompraID);
@@ -13,5 +14,5 @@ routes.post("/addCar", validateToken, carroCompra.addCarroProducto);
 routes.post("/quitCar", validateToken, carroCompra.quitCarroProducto);
 routes.get("/carroProducto/:idCarro", validateToken, carroCompra.getCarroProductoID);
 
-
-module.exports = routes
+export default routes;
+//module.exports = routes

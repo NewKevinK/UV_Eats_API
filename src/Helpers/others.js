@@ -1,9 +1,20 @@
-import { getConnection } from "../Database/dbConfig.js"
-import { SPI_carroCompra,  SPS_carroProductoID } from "../Database/Procedures/carroCompra.js";
-import { SPI_ordenProducto } from "../Database/Procedures/orden.js";
+//import { getConnection } from "../Database/dbConfig.js"
+//import { getConnection } from '../Database/dbConfig.js'
 
-const getDate = async () => {
+import { methods } from '../Controllers/test.js';
+import getConnection from '../Database/dbConfig.js'
+//import moduleA from 'my-library/module-a'
+//import helpp from '../Database/Procedures/carroCompra.js'
+
+//import { SPI_carroCompra,  SPS_carroProductoID } from "../Database/Procedures/carroCompra.js";
+//import { SPI_ordenProducto } from "../Database/Procedures/orden.js";
+//import {methods as queryy} from "../Database/Procedures/orden.js";
+
+ export const getDate = async () => {
     try{
+        //const text = queryy.SPI_ordenProducto;
+        //console.log(text);
+        //const text2 = helpp.SPI_carroCompra;
         const d = new Date();
         d.toLocaleDateString('en-GB').split('/').reverse().join('');
         return d;
@@ -22,7 +33,7 @@ const createCarritocompra = async (celular) => {
         const carrocompra = {idCarro : data[0].idUsuario, totalProductos : 0 , subtotal : 0 , idUsuario : data[0].idUsuario};
         
         let conn = await getConnection();
-        let res = await connection.query(SPI_carroCompra, carrocompra); 
+        let res = await connection.query("INSERT INTO carrocompra SET ?", carrocompra); 
         return true;
     }catch(error){
           console.log(error);        
@@ -110,7 +121,7 @@ const ordenProductos = async (idCarro, idOrden) => {
     try{
         
         let connection = await getConnection();
-        let result = await connection.query(SPS_carroProductoID, idCarro);
+        let result = await connection.query("SELECT p.idProducto AS 'idProducto', p.nombre AS 'producto', c.cantidad AS 'cantidad', c.precio * c.cantidad AS 'precio' FROM carro_producto c LEFT JOIN producto p ON c.idProducto = p.idProducto WHERE idCarro = ? ", idCarro);
         
 
         let listaProducto = [];
@@ -121,7 +132,7 @@ const ordenProductos = async (idCarro, idOrden) => {
             listaProducto.push(data[i]);
             listaProducto[i].idOrden = idOrden;
             
-            let res = await connection.query(SPI_ordenProducto, listaProducto[i]);
+            let res = await connection.query("INSERT INTO orden_producto SET ?", listaProducto[i]);
         }   
         
         
@@ -134,7 +145,7 @@ const ordenProductos = async (idCarro, idOrden) => {
 
 
 
-module.exports = {
+export const method  = {
     getDate,
     createCarritocompra,
     typeAddCarroProducto,

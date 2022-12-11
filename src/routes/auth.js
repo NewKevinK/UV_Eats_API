@@ -1,7 +1,9 @@
-const express = require('express')
+//const express = require('express')
+import express from 'express'
 const routes = express.Router()
 import {methods as auth} from "../Controllers/auth.js";
 
 routes.post("/", auth.loginAuth);
 
-module.exports = routes
+export default routes;
+//module.exports = routes

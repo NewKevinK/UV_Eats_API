@@ -1,11 +1,13 @@
-const jwt = require('jsonwebtoken');
-require('dotenv').config();
+//const jwt = require('jsonwebtoken');
+import jwt from 'jsonwebtoken'
+//require('dotenv').config();
+//import SECRET_KEY from '../../typeModule/config.js'
 
-function generateAccessToken(user) {
-    return jwt.sign(user, process.env.SECRET_KEY, {expiresIn: '30m'});
+export function generateAccessToken(user) {
+    return jwt.sign(user, "ITSASECRETK", {expiresIn: '30m'});
 }
 
-function validateToken(req, res, next) {
+export function validateToken(req, res, next) {
     try {
         let accessToken = req.headers['authorization'] || req.headers['x-access-token']; 
 
@@ -16,7 +18,7 @@ function validateToken(req, res, next) {
             accessToken = accessToken.slice(7, accessToken.lenght);
         }
 
-        jwt.verify(accessToken, process.env.SECRET_KEY, (err, user) =>{
+        jwt.verify(accessToken, "ITSASECRETK", (err, user) =>{
             if(err){
                 res.json({ message: "Access denied, token expired or incorrect" });
             }else{
@@ -28,8 +30,8 @@ function validateToken(req, res, next) {
     }
     
 }
-
+/*
 module.exports = {
     generateAccessToken,
     validateToken
-}
+}  */

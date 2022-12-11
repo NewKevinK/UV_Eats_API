@@ -1,22 +1,25 @@
-import { getConnection } from "../Database/dbConfig.js"
-import { compare } from "../Helpers/handleBcrypt.js"
-const { existEmail, findOne, getId } = require("../Helpers/validateUser")
-const { generateAccessToken } = require("../Helpers/jwtHelper")
+import  getConnection  from "../Database/dbConfig.js"
+//import { compare } from "../Helpers/handleBcrypt.js"
+import {methods as handle} from '../Helpers/handleBcrypt.js'
+//const { existEmail, findOne, getId } = require("../Helpers/validateUser")
+import { methods as methodsvu } from "../Helpers/validateUser.js"
+//const { generateAccessToken } = require("../Helpers/jwtHelper")
+import {generateAccessToken} from '../Helpers/jwtHelper.js'
 
 const loginAuth = async (req,res) => {
     try{
         const {email, password} = req.body;
-        const equalEmail = await existEmail(email);
+        const equalEmail = await methodsvu.existEmail(email);
         
         if(equalEmail){
-            const encryp = await findOne(email);
-            const checkPassword = await compare(password,encryp);
+            const encryp = await methodsvu.findOne(email);
+            const checkPassword = await handle.compare(password,encryp);
 
             if(checkPassword){
                 const connection = await getConnection();
                 const emailUser = {email: email};
                 const accessToken = generateAccessToken(emailUser);
-                const idUser = await getId(email);
+                const idUser = await methodsvu.getId(email);
                 res.header('authorization', accessToken).json({message: "authenticated user", token: accessToken, id: idUser});
 
             }else{

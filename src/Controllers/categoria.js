@@ -1,4 +1,4 @@
-import { getConnection } from "../Database/dbConfig.js"
+import  getConnection  from "../Database/dbConfig.js"
 import { SPD_categoria, SPI_categoria, SPS_categoria, SPS_categoriaID, SPA_categoria } from "../Database/Procedures/categoria.js";
 
 const addCategoria = async (req,res) => {

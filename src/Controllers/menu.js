@@ -1,4 +1,4 @@
-import { getConnection } from "../Database/dbConfig.js"
+import  getConnection  from "../Database/dbConfig.js"
 import { SPA_menu, SPD_menu, SPD_menuProducto, SPI_menu, SPI_menuProducto, SPS_menu, SPS_menuID } from "../Database/Procedures/menu.js";
 
 const addMenu = async (req,res) => {

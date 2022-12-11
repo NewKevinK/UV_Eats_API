@@ -1,13 +1,14 @@
-import { getConnection } from "../Database/dbConfig.js"
+import  getConnection  from "../Database/dbConfig.js"
 //import { SPS_carroCompraID } from "../Database/Procedures/carroCompra";
 import { SPI_orden } from "../Database/Procedures/orden.js";
-import { getDate, subCar, ordenProductos, resetCar } from "../Helpers/others.js";
+//import { getDate, subCar, ordenProductos, resetCar } from "../Helpers/others.js";
+import { method } from "../Helpers/others.js";
 
 const addOrden = async (req,res) => {
     try{
         const {idUsuario, estado} = req.body;
-        const date = await getDate();
-        let tot = await subCar(idUsuario);
+        const date = await method.getDate();
+        let tot = await method.subCar(idUsuario);
         const orden = {fecha : date, total : tot, estado, idUsuario, idCarro : idUsuario};
         
         const connection = await getConnection();
@@ -17,8 +18,8 @@ const addOrden = async (req,res) => {
       
         console.log(data.insertId);
 
-        const ordenP = await ordenProductos(idUsuario, data.insertId);
-        const resetC = await resetCar(idUsuario);
+        const ordenP = await method.ordenProductos(idUsuario, data.insertId);
+        const resetC = await method.resetCar(idUsuario);
         res.json({ message: "orden added" });
         
         

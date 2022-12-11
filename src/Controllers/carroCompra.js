@@ -1,6 +1,7 @@
-import { getConnection } from "../Database/dbConfig.js"
+import  getConnection  from "../Database/dbConfig.js"
 import { SPD_carroCompra,  SPI_carroProducto, SPS_carroCompra, SPS_carroCompraID, SPS_carroProductoID } from "../Database/Procedures/carroCompra.js";
-import { typeAddCarroProducto, typeQuitCarroProducto, refreshCarroCompra } from "../Helpers/others.js";
+//import { typeAddCarroProducto, typeQuitCarroProducto, refreshCarroCompra } from "../Helpers/others.js";
+import { method } from "../Helpers/others.js";
 
 
 
@@ -45,7 +46,7 @@ const addCarroProducto = async (req, res) => {
     try{
         const { idProducto, cantidad, precio, idCarro } = req.body;
         const parameter = {idProducto, cantidad, precio, idCarro};
-        const existP = await typeAddCarroProducto(idProducto, cantidad, precio, idCarro);
+        const existP = await method.typeAddCarroProducto(idProducto, cantidad, precio, idCarro);
         if(!existP){
             console.log("NO encontroooo");
 
@@ -54,7 +55,7 @@ const addCarroProducto = async (req, res) => {
         }
         
         res.json({ message: "carroProducto added" });
-        const refresh = await refreshCarroCompra( idCarro);
+        const refresh = await method.refreshCarroCompra( idCarro);
 
     } catch(error){
         res.status(500);
@@ -66,7 +67,7 @@ const quitCarroProducto = async (req, res) => {
     try{
         const { idProducto, cantidad, precio, idCarro } = req.body;
         const parameter = {idProducto, cantidad, precio, idCarro};
-        const minorthat0 = await typeQuitCarroProducto(idProducto, cantidad, precio, idCarro);
+        const minorthat0 = await method.typeQuitCarroProducto(idProducto, cantidad, precio, idCarro);
         if(!minorthat0){
             console.log("es menor que 0");
 
@@ -74,7 +75,7 @@ const quitCarroProducto = async (req, res) => {
             await connection.query(`DELETE FROM carro_producto WHERE idCarro = ${idCarro} AND idProducto = ${idProducto}`);
         }
         res.json({ message: "carroProducto quited" });
-        const refresh = await refreshCarroCompra( idCarro);
+        const refresh = await method.refreshCarroCompra( idCarro);
 
     } catch(error){
 

@@ -1,4 +1,4 @@
-import { getConnection } from "../Database/dbConfig"
+import  getConnection  from "../Database/dbConfig.js"
 
 const existEmail = async (emailu) => {
     try{
@@ -58,9 +58,16 @@ const getId = async (emailu) => {
     }
 }
 
-module.exports = {
+export const methods = {
     existEmail,
     existCelular,
     findOne, 
     getId
 }
+/*
+module.exports = {
+    existEmail,
+    existCelular,
+    findOne, 
+    getId
+}*/
