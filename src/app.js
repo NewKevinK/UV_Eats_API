@@ -10,7 +10,7 @@ import morgan from 'morgan'
 import path from 'path'
 
 import testRoutes from "./routes/test.js"; 
-import productoRoutes from "./routes/producto.js";
+/*import productoRoutes from "./routes/producto.js";
 import usuarioRoutes from "./routes/usuario.js";
 import authRoutes from "./routes/auth.js";
 import categoriaRoutes from "./routes/categoria.js";
@@ -18,7 +18,7 @@ import menuRoutes from "./routes/menu.js";
 import carroRoutes from "./routes/carroCompra.js";
 import ordenRoutes from "./routes/orden.js"; 
 import archivoRoutes from "./routes/archivo.js"; 
-
+*/
 
 // Swagger 
 import swaggerUI from 'swagger-ui-express'
@@ -60,14 +60,14 @@ app.get("/", (req, res) => {
 }); 
 
 app.use("/api/test/",testRoutes); 
-app.use("/api/producto/",productoRoutes);
+/*app.use("/api/producto/",productoRoutes);
 app.use("/api/usuario/",usuarioRoutes);
 app.use("/api/auth",authRoutes);
 app.use("/api/categoria", categoriaRoutes);
 app.use("/api/menu/",menuRoutes);
 app.use("/api/carro/",carroRoutes);
 app.use("/api/orden/",ordenRoutes); 
-app.use("/api/archivo/", archivoRoutes); 
+app.use("/api/archivo/", archivoRoutes);  */
 
 // Extras
 app.listen(port, () => console.log("Server listening to", port));
