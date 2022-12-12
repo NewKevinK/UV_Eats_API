@@ -20,6 +20,7 @@ routes.patch("/dislike/:idProducto", validateToken, pro.updateProductoDislike);
 
 routes.post("/addFav", validateToken, pro.addProductoFav);
 routes.delete("/quitFav", validateToken, pro.deleteProductoFav);
+routes.get("/getFav/:idUsuario", validateToken, pro.getProductoFav );
 
 export default routes;
 //module.exports = routes

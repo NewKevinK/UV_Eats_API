@@ -123,6 +123,19 @@ const deleteProductoFav = async (req, res) => {
     }
 };
 
+const getProductoFav = async (req,res) => {
+    try{
+        const { idUsuario } = req.params;
+        const connection = await getConnection();
+        const result = await connection.query(`SELECT idProducto FROM favorito WHERE idUsuario = ${idUsuario}`);
+        res.json(result);
+    }catch(error){
+        res.status(500);
+        res.send(error.message);
+    }
+};
+
+
 export const methodsss = {
     addProducto,
     getProducto,
@@ -132,5 +145,6 @@ export const methodsss = {
     updateProductoLike,
     updateProductoDislike,
     addProductoFav,
-    deleteProductoFav
+    deleteProductoFav,
+    getProductoFav
 }
