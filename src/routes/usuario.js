@@ -14,7 +14,7 @@ routes.get("/:idUsuario", validateToken, usuario.getUsuarioID);
 routes.delete("/idUsuario", validateToken, usuario.deleteUsuario);
 routes.patch("/:idUsuario", validateToken, usuario.updateUsuario);
 
-routes.patch("/password/:idUsuario", validateToken, usuario.updateUsuarioPassword);
+routes.patch("/password/:idUsuario",  usuario.updateUsuarioPassword);
 
 export default routes;
 //module.exports = routes

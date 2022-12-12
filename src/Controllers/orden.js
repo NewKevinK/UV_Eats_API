@@ -1,6 +1,6 @@
 import  getConnection  from "../Database/dbConfig.js"
 //import { SPS_carroCompraID } from "../Database/Procedures/carroCompra";
-import { SPI_orden } from "../Database/Procedures/orden.js";
+import { SPI_orden, SPS_orden, SPS_ordenID } from "../Database/Procedures/orden.js";
 //import { getDate, subCar, ordenProductos, resetCar } from "../Helpers/others.js";
 import { method } from "../Helpers/others.js";
 
@@ -32,7 +32,7 @@ const addOrden = async (req,res) => {
 const getOrden = async (req,res) => {
     try{
         const connection = await getConnection();
-        const result = await connection.query(SPS_categoria);
+        const result = await connection.query(SPS_orden);
         res.json(result);
     }catch(error){
         res.status(500);
@@ -42,10 +42,10 @@ const getOrden = async (req,res) => {
 
 const getOrdenID = async (req,res) => {
     try{
-        const { idCategoria } = req.params;
+        const { idCarro } = req.params;
 
         const connection = await getConnection();
-        const result = await connection.query(SPS_categoriaID, idCategoria);
+        const result = await connection.query(SPS_ordenID, idCarro);
         res.json(result);
     }catch(error){
         res.status(500);
@@ -53,8 +53,25 @@ const getOrdenID = async (req,res) => {
     }
 }
 
+const getOrdenProducto = async (req,res) => {
+    try{
+        const { idOrden } = req.params;
+
+        const connection = await getConnection();
+        const result = await connection.query(`SELECT idProducto, producto, cantidad, precio FROM orden_producto WHERE idOrden = ${idOrden}`);
+        res.json(result);
+    }catch(error){
+        res.status(500);
+        res.send(error.message);
+    }
+}
+
+
+
+
 export const methods = {
     addOrden,
     getOrden,
-    getOrdenID
+    getOrdenID,
+    getOrdenProducto
 }
