@@ -8,6 +8,7 @@ import { validateToken } from '../Helpers/jwtHelper.js';
 //import {methods} from '../Controllers/producto.js'
 //import { methodsss } from '../Controllers/producto.js';
 import { methodsss as pro } from '../Controllers/producto3.js';
+//Prueba para arreglar
 
 routes.post("/", validateToken, pro.addProducto);
 routes.get("/", validateToken, pro.getProducto);

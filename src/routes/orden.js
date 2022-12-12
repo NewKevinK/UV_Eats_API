@@ -10,6 +10,7 @@ routes.post("/", validateToken, orden.addOrden);
 routes.get("/", validateToken, orden.getOrden);
 routes.get("/:idCarro", validateToken, orden.getOrdenID);
 routes.get("/ordenProducto/:idOrden",validateToken, orden.getOrdenProducto);
+//Prueba para arreglar
 
 export default routes;
 //module.exports = routes
